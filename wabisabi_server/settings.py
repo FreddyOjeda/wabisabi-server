@@ -137,3 +137,9 @@ CORS_ALLOW_METHODS = [
 
 MEDIA_URL = '/products/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'products')
+
+import os
+
+# Ruta en el sistema de archivos donde se almacenarán los archivos estáticos.
+# Asegúrate de que esta ruta exista en el servidor de despliegue.
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
