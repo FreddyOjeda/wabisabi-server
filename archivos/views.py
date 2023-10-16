@@ -40,13 +40,13 @@ def guardar_imagen(request):
         with open(ruta_destino, 'wb') as destination:
             for chunk in archivo.chunks():
                 destination.write(chunk)
-        ruta_destino = f'https://wabisabi-server-production.up.railway.app/{archivo.name}'
+        ruta_destino = f'https://wabisabi-server-production.up.railway.app/products/{archivo.name}'
 
         # Crea un nuevo Producto y guárdalo en la base de datos
         producto = Producto(descripcion=descripcion, precio=precio, imagen=ruta_destino)
         producto.save()
 
-        return JsonResponse({'message': 'Imagen guardada exitosamente','ruta':ruta_destino})
+        return JsonResponse({'message': 'Imagen guardada exitosamente','ruta':ruta_destino,'directorio':directorio_destino})
     return JsonResponse({'message': 'Error al guardar la imagen'})
 
 @csrf_exempt
