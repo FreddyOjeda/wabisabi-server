@@ -1,0 +1,40 @@
+# Directorios y archivos generados automáticamente por Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+
+# Archivos de configuración específicos del entorno
+.venv
+.env.*
+
+# Directorios y archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de registro y archivos generados durante el desarrollo
+log/
+*.log
+*.log.*
+logs/
+*.pid
+*.coverage
+
+# Directorio de datos estáticos (si no se utiliza almacenamiento en la nube)
+staticfiles/
+media/
+
+# Directorio de archivos de configuración local (configuración de desarrollo)
+local_settings.py
+
+# Dependencias de Python
+*.egg-info/
+__pycache__/
+.pyc
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment (si se usa virtualenv)
+venv/
