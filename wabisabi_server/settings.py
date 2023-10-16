@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-yqli0uo+obk3sf9s8p_dh+)w!$(*x0)3x376a*q)!#@yvwo@&#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wabisabi-server-production.up.railway.app']
+
 
 
 # Application definition
