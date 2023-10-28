@@ -37,3 +37,4 @@ __pycache__/
 
 # Virtual environment (si se usa virtualenv)
 venv/
+db.sqlite3

@@ -12,6 +12,7 @@ urlpatterns = [
     path('guardar-productos/', guardar_productos, name='guardar_productos'),
     path('borrar-productos/', borrar_productos, name='borrar_productos'),
     path('borrar-producto/<int:producto_id>/', views.borrar_producto, name='borrar_producto'),
+    path('actualizar-producto/<int:producto_id>/', views.actualizar_producto, name='actualizar_producto')
 ]
 
 if settings.DEBUG:

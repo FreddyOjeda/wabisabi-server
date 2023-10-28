@@ -7,6 +7,7 @@ from .serializers import ProductoSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 
 
 @api_view(['POST'])
@@ -67,6 +68,26 @@ def borrar_producto(request, producto_id):
         return JsonResponse({'message': 'Producto no encontrado'}, status=404)
     except Exception as e:
         return JsonResponse({'message': 'Error al borrar el producto'}, status=500)
+
+@api_view(['PUT'])
+def actualizar_producto(request, producto_id):
+    try:
+        producto = Producto.objects.get(id=producto_id)
+        if request.method == 'PUT':
+            nueva_descripcion = request.data.get('descripcion', producto.descripcion)
+            nuevo_precio = request.data.get('precio', producto.precio)
+            serializer = ProductoSerializer(producto, data={'descripcion': nueva_descripcion, 'precio': nuevo_precio}, partial=True)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'message': 'Producto actualizado exitosamente'})
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Producto.DoesNotExist:
+        return Response({'message': 'Producto no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({'message': 'Error al actualizar el producto'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class ListaProductos(generics.ListAPIView):
     queryset = Producto.objects.all()
